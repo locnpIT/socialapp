@@ -38,6 +38,7 @@ public class PostServiceImplementation implements PostService{
 		User user = this.userService.findUserById(userId);
 		
 		
+		
 		newPost.setCaption(post.getCaption());
 		newPost.setImage(post.getImage());
 //		newPost.setCreatedAt(new Localdatetime);
