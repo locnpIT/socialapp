@@ -4,10 +4,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,8 +29,12 @@ public class Post {
 	
 	private String video;
 	
+	@JsonIgnore
+	@ManyToOne
 	private User user;
 	
+	
+	@OneToMany
 	private List<User> liked = new ArrayList<>();
 	
 	private LocalDateTime createdAt;
@@ -85,6 +94,8 @@ public class Post {
 	public void setLiked(List<User> liked) {
 		this.liked = liked;
 	}
+	
+	
 
 	public Post(Integer id, String caption, String image, String video, User user, List<User> liked,
 			LocalDateTime createdAt) {

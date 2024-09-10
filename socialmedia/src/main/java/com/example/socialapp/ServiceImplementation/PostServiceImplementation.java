@@ -1,5 +1,6 @@
 package com.example.socialapp.ServiceImplementation;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,11 +42,11 @@ public class PostServiceImplementation implements PostService{
 		
 		newPost.setCaption(post.getCaption());
 		newPost.setImage(post.getImage());
-//		newPost.setCreatedAt(new Localdatetime);
+		newPost.setCreatedAt(LocalDateTime.now());
 		newPost.setVideo(post.getVideo());
 		newPost.setUser(user);
 		
-		return newPost;
+		return this.postRepository.save(newPost);
 	}
 
 	@Override

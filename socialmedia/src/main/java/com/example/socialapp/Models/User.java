@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,10 +25,12 @@ public class User {
 	private String password;
 	private String gender;
 	
+	
 	private List<Integer> followers = new ArrayList<>();
 	
 	private List<Integer> following = new ArrayList<>();
 	
+	@ManyToMany
 	private List<Post> savedPost = new ArrayList<>();
 	
 	

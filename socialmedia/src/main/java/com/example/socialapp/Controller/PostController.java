@@ -46,7 +46,7 @@ public class PostController {
 		return ResponseEntity.status(HttpStatus.OK).body(res);
 	}
 	
-	@GetMapping("/post/{postId}")
+	@GetMapping("/posts/{postId}")
 	public ResponseEntity<Post> findPostByIdHandler(@PathVariable(name = "postId") Integer postId) throws Exception{
 		
 		Post postFound = this.postService.findPostById(postId);
@@ -55,7 +55,7 @@ public class PostController {
 	}
 	
 	
-	@GetMapping("/post/user/{userId}")
+	@GetMapping("/posts/user/{userId}")
 	public ResponseEntity<List<Post>> findUsersPost(@PathVariable Integer userId){
 		
 		List<Post> posts = this.postService.findPostByUserId(userId);
@@ -72,7 +72,7 @@ public class PostController {
 
 	}
 	
-	@PutMapping("/post/{postId}/user/{userId}")
+	@PutMapping("/save/posts/{postId}/user/{userId}")
 	public ResponseEntity<Post> savedPostHandler(@PathVariable Integer postId, @PathVariable Integer userId) throws Exception{
 		
 		
@@ -83,7 +83,7 @@ public class PostController {
 	}
 	
 	
-	@PutMapping("/post/like/{postId}/user/{userId}")
+	@PutMapping("/posts/like/{postId}/user/{userId}")
 	public ResponseEntity<Post> likePostHandler(@PathVariable Integer postId,@PathVariable Integer userId) throws Exception{
 		
 		Post posts = this.postService.likePost(postId, userId);
