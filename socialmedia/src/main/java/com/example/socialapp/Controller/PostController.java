@@ -36,7 +36,7 @@ public class PostController {
 		
 	}
 	
-	@DeleteMapping("/posts/users/{postId}/user/{userId}")
+	@DeleteMapping("/posts/{postId}/user/{userId}")
 	public ResponseEntity<ApiResponse> deletePost(@PathVariable(name = "postId") Integer postId, @PathVariable(name = "userId") Integer userId) throws Exception{
 		
 		String message = postService.deletePost(postId, userId);

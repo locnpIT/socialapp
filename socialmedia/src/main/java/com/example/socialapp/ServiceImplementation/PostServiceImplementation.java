@@ -13,6 +13,8 @@ import com.example.socialapp.Repository.UserRepository;
 import com.example.socialapp.Service.PostService;
 import com.example.socialapp.Service.UserService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class PostServiceImplementation implements PostService{
 	
@@ -58,6 +60,8 @@ public class PostServiceImplementation implements PostService{
 			throw new Exception("User can'r delete another users post!");
 		}
 		
+		postRepository.deleteFromUsersSavedPost(postId);	
+		postRepository.deleteFromPostLike(postId);
 		
 		postRepository.delete(post);
 		return "Successful delete post";

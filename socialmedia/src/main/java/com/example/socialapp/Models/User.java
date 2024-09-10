@@ -3,6 +3,9 @@ package com.example.socialapp.Models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +34,7 @@ public class User {
 	private List<Integer> following = new ArrayList<>();
 	
 	@ManyToMany
+	@JsonIgnore
 	private List<Post> savedPost = new ArrayList<>();
 	
 	
