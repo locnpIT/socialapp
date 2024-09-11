@@ -13,8 +13,6 @@ import com.example.socialapp.Repository.UserRepository;
 import com.example.socialapp.Service.PostService;
 import com.example.socialapp.Service.UserService;
 
-import jakarta.transaction.Transactional;
-
 @Service
 public class PostServiceImplementation implements PostService{
 	
