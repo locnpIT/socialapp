@@ -1,0 +1,54 @@
+package com.example.socialapp.Controller;
+
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.socialapp.Models.User;
+import com.example.socialapp.Repository.UserRepository;
+import com.example.socialapp.Service.UserService;
+
+@RestController
+public class AuthController {
+
+	private final UserService userService;
+	
+	private final UserRepository userRepository;
+	
+	private final PasswordEncoder passwordEncoder;
+	
+	public AuthController(UserService userService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+		this.userService = userService;
+		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
+	}
+	
+	@PostMapping("/users")
+	public User createUser(@RequestBody User user) throws Exception {
+		
+		
+		User isExist = this.userRepository.findByEmail(user.getEmail());
+		if(isExist != null) {
+			throw new Exception("This email already used with another account!");
+		}
+		
+		
+		User newUser = new User();
+		newUser.setEmail(user.getEmail());
+		newUser.setFirstName(user.getFirstName());
+		newUser.setLastName(user.getLastName());
+		newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+		
+		
+		User savedUser = userRepository.save(newUser);
+		
+		Authentication auuthentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+		
+		return savedUser;
+	}
+	
+	
+}

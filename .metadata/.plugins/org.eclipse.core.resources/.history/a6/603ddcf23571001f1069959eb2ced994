@@ -1,0 +1,5 @@
+package com.example.socialapp.Request;
+
+public class LoginRequest {
+
+}

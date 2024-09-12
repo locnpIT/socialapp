@@ -32,13 +32,7 @@ public class UserController {
 	}
 	
 
-	@PostMapping("/users")
-	public User createUser(@RequestBody User user) {
-		
-		User savedUser = this.userService.registerUser(user);
-		
-		return savedUser;
-	}
+	
 	
 	@GetMapping("/users")
 	public List<User> getAllUsers(){

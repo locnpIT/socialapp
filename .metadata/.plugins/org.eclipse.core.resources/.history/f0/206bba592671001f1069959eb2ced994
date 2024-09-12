@@ -1,0 +1,18 @@
+package com.example.socialapp.Config;
+
+import javax.crypto.SecretKey;
+
+import org.springframework.security.core.Authentication;
+
+import io.jsonwebtoken.security.Keys;
+
+public class JwtProvider {
+	
+	private SecretKey key = Keys.hmacShaKeyFor(jwtConstant.SECRET_KEY.getBytes());
+	
+	public String generateToken(Authentication auth) {
+		
+		return null;
+	}
+
+}
