@@ -1,0 +1,46 @@
+package com.example.socialapp.ServiceImplementation;
+
+import org.springframework.stereotype.Service;
+
+import com.example.socialapp.Models.Comment;
+import com.example.socialapp.Service.CommentService;
+import com.example.socialapp.Service.PostService;
+import com.example.socialapp.Service.UserService;
+
+@Service
+public class CommentServiceImplementation implements CommentService {
+	
+	private final PostService postService;
+	
+	private final UserService userService;
+	
+	public CommentServiceImplementation(PostService postService, UserService userService) {
+		this.postService = postService;
+		this.userService = userService;
+		
+		
+	}
+
+	@Override
+	public Comment createComment(Comment comment, Integer postId, Integer userId) {
+		
+		
+		
+		return null;
+	}
+
+	@Override
+	public Comment likeComment(Integer commentId, Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Comment findCommentById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+}

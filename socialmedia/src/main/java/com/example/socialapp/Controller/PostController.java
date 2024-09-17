@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.socialapp.Models.Post;
@@ -20,6 +21,7 @@ import com.example.socialapp.Service.PostService;
 import com.example.socialapp.Service.UserService;
 
 @RestController
+@RequestMapping("/api")
 public class PostController {
 	
 	private final PostService postService;

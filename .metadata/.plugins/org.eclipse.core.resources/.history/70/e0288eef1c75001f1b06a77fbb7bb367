@@ -1,0 +1,10 @@
+package com.example.socialapp.ServiceImplementation;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class CommentServiceImplementation  {
+
+	
+	
+}
