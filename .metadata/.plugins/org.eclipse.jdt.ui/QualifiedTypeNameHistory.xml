@@ -29,7 +29,6 @@
     <fullyQualifiedTypeName name="org.springframework.security.web.authentication.www.BasicAuthenticationFilter"/>
     <fullyQualifiedTypeName name="jakarta.servlet.Filter"/>
     <fullyQualifiedTypeName name="org.springframework.web.filter.OncePerRequestFilter"/>
-    <fullyQualifiedTypeName name="javax.crypto.SecretKey"/>
     <fullyQualifiedTypeName name="io.jsonwebtoken.security.Keys"/>
     <fullyQualifiedTypeName name="com.example.socialapp.Config.jwtConstant"/>
     <fullyQualifiedTypeName name="io.jsonwebtoken.Jwts"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
     <fullyQualifiedTypeName name="com.example.socialapp.Config.JwtProvider"/>
     <fullyQualifiedTypeName name="com.example.socialapp.Response.AuthResponse"/>
+    <fullyQualifiedTypeName name="javax.crypto.SecretKey"/>
 </qualifiedTypeNameHistroy>

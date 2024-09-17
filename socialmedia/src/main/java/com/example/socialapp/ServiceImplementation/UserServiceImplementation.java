@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.socialapp.Config.JwtProvider;
 import com.example.socialapp.Models.User;
 import com.example.socialapp.Repository.UserRepository;
 import com.example.socialapp.Service.UserService;
@@ -49,17 +50,17 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public User followUser(Integer userId1, Integer userId2) throws Exception{
-		User user1 = findUserById(userId1);
+	public User followUser(Integer reqUserId, Integer userId2) throws Exception{
+		User reqUser = findUserById(reqUserId);
 		User user2 = findUserById(userId2);
 		
-		user2.getFollowers().add(user1.getId());
-		user1.getFollowing().add(user2.getId());
+		user2.getFollowers().add(reqUser.getId());
+		reqUser.getFollowing().add(user2.getId());
 		
-		this.userRepository.save(user1);
+		this.userRepository.save(reqUser);
 		this.userRepository.save(user2);
 		
-		return user1;
+		return reqUser;
 	}
 
 	@Override
@@ -68,10 +69,14 @@ public class UserServiceImplementation implements UserService {
 		
 		if(updateUser.isPresent()) {
 			User userAfterUpdate = updateUser.get();
-			
-			userAfterUpdate.setFirstName(user.getFirstName());
-			userAfterUpdate.setLastName(user.getLastName());
-			userAfterUpdate.setEmail(user.getEmail());
+			if(user.getFirstName() != null)
+				userAfterUpdate.setFirstName(user.getFirstName());
+			if(user.getLastName() != null)
+				userAfterUpdate.setLastName(user.getLastName());
+			if(user.getEmail() != null)
+				userAfterUpdate.setEmail(user.getEmail());
+			if(user.getGender() != null)
+				userAfterUpdate.setGender(user.getGender());
 			return this.userRepository.save(userAfterUpdate);
 		}
 		
@@ -85,6 +90,14 @@ public class UserServiceImplementation implements UserService {
 		
 		
 		return this.userRepository.searchUser(query);
+	}
+
+	@Override
+	public User findUserByJwt(String jwt) {
+		String email = JwtProvider.getEmailFromJwtToken(jwt);
+		
+		User user = this.userRepository.findByEmail(email);
+		return user;
 	}
 	
 	
