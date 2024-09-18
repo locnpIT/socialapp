@@ -1,0 +1,34 @@
+package com.example.socialapp.Controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.socialapp.Models.Reels;
+import com.example.socialapp.Models.User;
+import com.example.socialapp.Service.ReelsService;
+import com.example.socialapp.Service.UserService;
+
+@RestController
+public class ReelsController {
+
+	private final UserService userService;
+	private final ReelsService reelsService;
+	
+	public ReelsController(UserService userServices, ReelsService reelsService) {
+		this.userService = userServices;
+		this.reelsService = reelsService;
+	}
+	
+	
+	@PostMapping
+	public Reels createReels(@RequestBody Reels reels, @RequestHeader("Authorization") String jwt) {
+		
+		User reqUser = this.userService.findUserByJwt(jwt);
+		Reels createdReels = this.reelsService.createReels(reels, reqUser);
+		return createdReels;
+	}
+	
+	
+}

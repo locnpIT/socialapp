@@ -1,0 +1,34 @@
+package com.example.socialapp.ServiceImplementation;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.socialapp.Models.Reels;
+import com.example.socialapp.Models.User;
+import com.example.socialapp.Service.ReelsService;
+
+@Service
+public class ReelsServiceImplementation implements ReelsService {
+
+	@Override
+	public Reels createReels(Reels reels, User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Reels> findAllReels() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Reels> findUserReels(Integer userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+}
