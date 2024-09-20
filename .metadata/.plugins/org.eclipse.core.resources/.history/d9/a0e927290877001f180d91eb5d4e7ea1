@@ -1,0 +1,37 @@
+package com.example.socialapp.Controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.socialapp.Models.Chat;
+import com.example.socialapp.Request.CreateChatRequest;
+import com.example.socialapp.Service.ChatService;
+import com.example.socialapp.Service.UserService;
+
+
+@RestController
+public class ChatController {
+	
+	private final ChatService chatService;
+	private final UserService userService;
+	
+	
+	public ChatController(ChatService chatService, UserService userService) {
+		this.chatService = chatService;
+		this.userService = userService;
+	}
+	
+	
+	@PostMapping
+	public Chat createChat(@RequestBody CreateChatRequest req) {
+		
+		Chat chat = chatService.createChat(req.getReqUser(), req.getUser2());
+		return chat;
+	}
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,11 @@
+package com.example.socialapp.Request;
+
+import com.example.socialapp.Models.User;
+
+public class CreateChatRequest {
+	
+	private User reqUser;
+	
+	private User user2;
+
+}

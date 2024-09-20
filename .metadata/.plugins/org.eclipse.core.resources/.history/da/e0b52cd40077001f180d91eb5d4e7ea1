@@ -1,0 +1,44 @@
+package com.example.socialapp.ServiceImplementation;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.socialapp.Models.Chat;
+import com.example.socialapp.Models.User;
+import com.example.socialapp.Repository.ChatRepository;
+import com.example.socialapp.Service.ChatService;
+
+@Service
+public class ChatServiceImplementation implements ChatService {
+	
+	
+	private ChatRepository chatRepository;
+	
+	public ChatServiceImplementation(ChatRepository chatRepository) {
+		this.chatRepository = chatRepository;
+	}
+	
+
+	@Override
+	public Chat createChat(User reqUser, User user2) {
+		
+		Chat isExist = chatRepository
+		
+		
+		return null;
+	}
+
+	@Override
+	public Chat findChatById(Integer chatId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Chat> findAllChatByUserId(Integer userId) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
