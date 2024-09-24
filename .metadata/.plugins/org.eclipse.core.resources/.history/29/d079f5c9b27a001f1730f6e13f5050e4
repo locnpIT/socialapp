@@ -1,0 +1,9 @@
+package com.example.socialapp.Config;
+
+
+
+public class GlobalExceptionHandler {
+	
+	
+	
+}

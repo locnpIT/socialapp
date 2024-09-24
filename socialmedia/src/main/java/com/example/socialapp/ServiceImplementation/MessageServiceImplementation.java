@@ -62,6 +62,10 @@ public class MessageServiceImplementation implements MessageService{
 		
 		Chat chat = this.chatService.findChatById(chatId);	
 		
+		if(chat == null) {
+			throw new Exception("Cannot find this chat");
+		}
+		
 		return messageRepository.findByChatId(chatId);
 	}
 	
