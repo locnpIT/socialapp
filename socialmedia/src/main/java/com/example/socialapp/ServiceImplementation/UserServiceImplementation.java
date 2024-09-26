@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.socialapp.Config.JwtProvider;
+import com.example.socialapp.Exception.UserException;
 import com.example.socialapp.Models.User;
 import com.example.socialapp.Repository.UserRepository;
 import com.example.socialapp.Service.UserService;
@@ -35,12 +36,12 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public User findUserById(Integer id) throws Exception{
+	public User findUserById(Integer id) throws UserException{
 		Optional<User> user = this.userRepository.findById(id);
 		if(user.isPresent())
 			return user.get();
 		
-		throw new Exception("Not found user have id = " + id);
+		throw new UserException("Not found user have id = " + id);
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public User followUser(Integer reqUserId, Integer userId2) throws Exception{
+	public User followUser(Integer reqUserId, Integer userId2) throws UserException{
 		User reqUser = findUserById(reqUserId);
 		User user2 = findUserById(userId2);
 		
@@ -64,7 +65,7 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public User updateUser(User user, Integer userId) throws Exception{
+	public User updateUser(User user, Integer userId) throws UserException{
 		Optional<User> updateUser = this.userRepository.findById(userId);
 		
 		if(updateUser.isPresent()) {
@@ -81,7 +82,7 @@ public class UserServiceImplementation implements UserService {
 		}
 		
 		else {
-			throw new Exception("User with id = " + user.getId() + " is not found");
+			throw new UserException("User with id = " + user.getId() + " is not found");
 		}
 	}
 
