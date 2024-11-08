@@ -18,8 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class jwtValidator extends OncePerRequestFilter {
 
-
-	
 	//jwtValidator là một lớp mở rộng từ OncePerRequestFilter của Spring, đảm bảo rằng mỗi yêu cầu HTTP đến server sẽ được kiểm tra JWT một lần duy nhất trong chuỗi các bộ lọc (filter chain).
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

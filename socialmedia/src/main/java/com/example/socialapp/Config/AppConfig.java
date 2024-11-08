@@ -1,4 +1,4 @@
-package com.example.socialapp.Config;
+ package com.example.socialapp.Config;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -49,7 +49,7 @@ public class AppConfig {
 				CorsConfiguration cfg = new CorsConfiguration();
 
 				cfg.setAllowedOrigins(Arrays.asList(
-						"http://localhost:3030/"));
+						"http://localhost:3000/"));
 
 				cfg.setAllowedMethods(Collections.singletonList("*"));
 				cfg.setAllowCredentials(true);
